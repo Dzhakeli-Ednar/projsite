@@ -1,12 +1,10 @@
 
-
-
 export default function Chat(){
 
     return(
-<div>
+<div >
 
-<div>hallo</div>
+<div >hallo</div>
 
 
 

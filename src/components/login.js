@@ -1,18 +1,16 @@
 
-
-
 export default function Login(){
 
     return(
-<div>
+<div className="login">
 
-<div>hallo</div>
-
-
+<div className='loginForm'>
 
 
 
 
+
+</div>
 
 </div>
     )
