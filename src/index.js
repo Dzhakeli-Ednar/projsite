@@ -9,7 +9,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom"
 
-
+ 
 
 function App(){
 const { pathname } = useLocation()
