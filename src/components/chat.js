@@ -2,14 +2,19 @@
 export default function Chat(){
 
     return(
-<div >
+<div className="chatSite">
 
-<div >hallo</div>
+<div className=" fon" >
+
+<div className="panelChat">
 
 
 
 
+</div>
 
+
+</div>
 
 
 </div>

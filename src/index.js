@@ -12,6 +12,12 @@ import { useLocation } from "react-router-dom"
  
 
 function App(){
+
+// window.addEventListener('scroll',()=>{
+//     const scrollY = window.scrollY
+//     document.getElementById('Hommy').style.backgroundPosition = `center ${scrollY *0,5}px`
+// })
+
 const { pathname } = useLocation()
 
   let topClass = "topPanel"
