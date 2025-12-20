@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet, Link } from "react-router-dom";
 
 //  let userbase = []
 export default function Login(){
@@ -85,8 +85,8 @@ console.log(users)
 
         </form>
 
-
-
+        {/* <Outlet/> */}
+<Link to="/reg">Go to Register</Link>
     </div>
 
 </div>

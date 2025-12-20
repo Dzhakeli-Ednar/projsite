@@ -4,11 +4,12 @@ import {elem, changeTop,changeTopHome,changeTopChat,Regestration} from './fitchs
 import Home from './components/home.js'
 import Login from './components/login.js'
 import Chat from './components/chat.js'
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Outlet } from "react-router-dom";
 import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom"
-
+import {Register} from './components/register.js'
+// import { Outlet } from "react-router-dom"
  
 
 function App(){
@@ -47,9 +48,6 @@ return(
                     <div id='login'>
                         <Link to='/login' onClick={changeTop}>Login</Link>
                     </div>
-                    <div>
-                      
-                    </div>
                 </nav>
                 
             </div>
@@ -62,8 +60,13 @@ return(
         </div>
         
         <Routes>
-                <Route path='/home' element={<Home />} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/home' element={<Home />} />;
+                <Route path='/login' element={<Login />}>
+
+
+                </Route>
+                <Route path='/reg' element={<Register />}/>
+
                 <Route path='/chat' element={<Chat />} />
         </Routes>
         
