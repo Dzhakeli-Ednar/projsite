@@ -1,5 +1,5 @@
 
-import { useLocation } from "react-router-dom"
+// import { useLocation } from "react-router-dom"
 
 
 
@@ -16,18 +16,18 @@ elem()
 
 export function changeTop(){
 
-let {pathname} = useLocation
+// let {pathname} = useLocation
 
 
     let topForm = document.getElementById('topForm')
 
-if(pathname === '/login'){
-topForm.classList.remove('topPanel')
-        topForm.classList.add('loginTop')
-}
+// if(pathname === '/login'){
+// topForm.classList.remove('topPanel')
+//         topForm.classList.add('loginTop')
+// }
 
 
-   console.log(pathname)
+//    console.log(pathname)
      
      if(topForm.classList.contains('chatForm')){
             topForm.classList.remove('chatForm')
@@ -42,15 +42,15 @@ topForm.classList.remove('topPanel')
 
 export function changeTopHome(){
 
-let {pathname} = useLocation
+// let {pathname} = useLocation
 
 
     let topForm = document.getElementById('topForm')
 
-if(pathname === '/login'){
-topForm.classList.remove('topPanel')
-        topForm.classList.add('loginTop')
-}
+// if(pathname === '/login'){
+// topForm.classList.remove('topPanel')
+//         topForm.classList.add('loginTop')
+// }
 
 
   if(topForm.classList.contains('chatForm')){
@@ -66,15 +66,15 @@ topForm.classList.remove('topPanel')
 
 export function changeTopChat(){
 
-let {pathname} = useLocation
+// let {pathname} = useLocation
 
 
     let topForm = document.getElementById('topForm')
 
-if(pathname === '/login'){
-topForm.classList.remove('topPanel')
-        topForm.classList.add('loginTop')
-}
+// if(pathname === '/login'){
+// topForm.classList.remove('topPanel')
+//         topForm.classList.add('loginTop')
+// }
 
 
    
@@ -87,3 +87,17 @@ topForm.classList.remove('topPanel')
     }
     
 }
+
+
+export function Regestration(){
+     
+    return(
+        <>
+        <div>{}</div>
+        <div>{}</div>
+        
+        </>
+    )
+}
+
+Regestration()

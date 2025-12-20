@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {elem, changeTop,changeTopHome,changeTopChat} from './fitchs/elem.js'
+import {elem, changeTop,changeTopHome,changeTopChat,Regestration} from './fitchs/elem.js'
 import Home from './components/home.js'
 import Login from './components/login.js'
 import Chat from './components/chat.js'
@@ -13,10 +13,6 @@ import { useLocation } from "react-router-dom"
 
 function App(){
 
-// window.addEventListener('scroll',()=>{
-//     const scrollY = window.scrollY
-//     document.getElementById('Hommy').style.backgroundPosition = `center ${scrollY *0,5}px`
-// })
 
 const { pathname } = useLocation()
 
@@ -40,6 +36,7 @@ return(
        
         <div className='dom'>
             <div >
+              
                 <nav className={topClass} id='topForm'>
                     <div id='home' >
                         <Link to='/home' onClick={changeTopHome}>Home</Link>
@@ -50,8 +47,11 @@ return(
                     <div id='login'>
                         <Link to='/login' onClick={changeTop}>Login</Link>
                     </div>
-
+                    <div>
+                      
+                    </div>
                 </nav>
+                
             </div>
             <div>
               
