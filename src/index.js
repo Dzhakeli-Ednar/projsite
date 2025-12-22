@@ -25,6 +25,8 @@ const { pathname } = useLocation()
     topClass = "chatForm"
   }else if(pathname === '/home'){
     topClass = 'topPanel'
+  }else if(pathname === '/reg'){
+    topClass = 'loginTop'
   }
 
 return(
@@ -46,7 +48,7 @@ return(
                         <Link to='/chat' onClick={changeTopChat}>Chat</Link>
                     </div>
                     <div id='login'>
-                        <Link to='/login' onClick={changeTop}>Login</Link>
+                        <Link to='/login' onClick={changeTop}>Registration</Link>
                     </div>
                 </nav>
                 

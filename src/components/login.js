@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Navigate, Outlet, Link } from "react-router-dom";
 
 //  let userbase = []
@@ -9,7 +9,7 @@ export default function Login(){
     let [name,setvalue] = useState('')
     let [password,setpassword] = useState('')
     let [err, seterror] = useState('')
-    let [users, setusers] = useState([])
+    let [users, setusers] = useState( ()=>{ return JSON.parse(localStorage.getItem('user')) ||[]})
     let [paserr,setpaserr] = useState('')
 
     function changeval(e){
@@ -32,7 +32,6 @@ e.preventDefault()
 
 if(name.trim().length<5){
     seterror('Name is short, write more')
-    
     return 
 }else if(password.trim().length<3){
     setpaserr('Password is short, write more')
@@ -41,22 +40,18 @@ seterror('')
 setpaserr('')
 
 
-setusers(prev =>
-    {let update = [...prev,{name,password}]
+let profiles = JSON.parse(localStorage.getItem('user'))
+let upuser = [...profiles,{name,password}]
+setusers(upuser)
 
-console.log(update)
-return update
-})
-
-
-
-// console.log(err)
 
 setvalue('')
 setpassword('')
-console.log(users)
     }
-
+useEffect(()=>{
+console.log("users updated:", users)
+  localStorage.setItem("user", JSON.stringify(users))
+}, [users])
   
     return(
 
@@ -86,7 +81,7 @@ console.log(users)
         </form>
 
         {/* <Outlet/> */}
-<Link to="/reg">Go to Register</Link>
+<Link to="/reg">Go to Login</Link>
     </div>
 
 </div>
