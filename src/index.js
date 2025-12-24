@@ -1,4 +1,5 @@
 import React from 'react'
+import { Profile } from './components/profile.js'
 import ReactDOM from 'react-dom/client'
 import {elem, changeTop,changeTopHome,changeTopChat,Regestration} from './fitchs/elem.js'
 import Home from './components/home.js'
@@ -26,6 +27,8 @@ const { pathname } = useLocation()
   }else if(pathname === '/home'){
     topClass = 'topPanel'
   }else if(pathname === '/reg'){
+    topClass = 'loginTop'
+  }else if(pathname === '/profile'){
     topClass = 'loginTop'
   }
 
@@ -68,7 +71,7 @@ return(
 
                 </Route>
                 <Route path='/reg' element={<Register />}/>
-
+                <Route path='/profile' element={<Profile />}/>
                 <Route path='/chat' element={<Chat />} />
         </Routes>
         

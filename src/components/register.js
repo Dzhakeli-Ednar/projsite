@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { Navigate, Outlet, Link } from "react-router-dom";
-
+import Login from "./login";
+import { useNavigate } from "react-router-dom";
 
 
 export  function Register(){
 
-
+const navigate = useNavigate();
     let [name,setvalue] = useState('')
     let [password,setpassword] = useState('')
     let [err, seterror] = useState('')
@@ -25,36 +26,47 @@ export  function Register(){
   
 
 
+
+
     function Sabform (e){
 e.preventDefault()
-
-
-
-if(name.trim().length<5){
-    seterror('Name is short, write more')
-    
-    return 
-}else if(password.trim().length<3){
-    setpaserr('Password is short, write more')
+let prof = JSON.parse(localStorage.getItem('user'))
+console.log(prof)
+if (prof.some(u => u.name === name && u.password === password)) {
+    console.log('hallpooo')
+  navigate("/profile")
+} else {
+  setpaserr("Wrong login or password")
+  return
 }
-seterror('')
 setpaserr('')
 
 
-setusers(prev =>
-    {let update = [...prev,{name,password}]
-
-console.log(update)
-return update
-})
 
 
+// if(name.trim().length<5){
+//     seterror('Name is short, write more')
+//     return 
+// }else if(password.trim().length<3){
+//     setpaserr('Password is short, write more')
+// }
+// seterror('')
+// setpaserr('')
 
-// console.log(err)
+
+
+
+
 
 setvalue('')
 setpassword('')
-console.log(users)
+
+let userone = JSON.parse(localStorage.getItem('first')) || []
+userone= [{name,password}]
+localStorage.setItem('first', JSON.stringify(userone))
+console.log(localStorage.getItem('first'))
+
+
     }
 
   

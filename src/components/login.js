@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { Navigate, Outlet, Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 //  let userbase = []
 export default function Login(){
 
    
-
+let navigate = useNavigate()
     let [name,setvalue] = useState('')
     let [password,setpassword] = useState('')
     let [err, seterror] = useState('')
@@ -29,30 +29,50 @@ export default function Login(){
 e.preventDefault()
 
 
+for(let i of users){
+    if(name === i.name){
+        // console.log(i.name)
+        seterror('Name already created, please change something')
+        return 
+    }
+}
+seterror('')
+
 
 if(name.trim().length<5){
     seterror('Name is short, write more')
     return 
 }else if(password.trim().length<3){
     setpaserr('Password is short, write more')
+    return
 }
 seterror('')
 setpaserr('')
 
 
-let profiles = JSON.parse(localStorage.getItem('user'))
-let upuser = [...profiles,{name,password}]
+let upuser = [...users,{name,password}]
 setusers(upuser)
 
 
 setvalue('')
 setpassword('')
+navigate('/profile')
+
+
+
+let userone = JSON.parse(localStorage.getItem('first')) || []
+userone= [{name,password}]
+localStorage.setItem('first', JSON.stringify(userone))
+console.log(localStorage.getItem('first'))
+
     }
 useEffect(()=>{
 console.log("users updated:", users)
   localStorage.setItem("user", JSON.stringify(users))
 }, [users])
   
+
+
     return(
 
 
@@ -68,7 +88,7 @@ console.log("users updated:", users)
             <div>
                 <label htmlFor='username' >Name:</label>
                 <input type="text" id="username" value={name} autoComplete="off" onChange={changeval} name="username" placeholder="Your name?" required minLength={5}></input>
-                <div>{err} </div>
+                <div >{err} </div>
             </div>
             <div>
                 <label htmlFor='userpassword' >Password:</label>
