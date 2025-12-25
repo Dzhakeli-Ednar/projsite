@@ -1,26 +1,106 @@
+import { useEffect, useState } from "react"
+import { Navigate, Outlet, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+//  let userbase = []
+
 
 export default function Home(){
+   
+let navigate = useNavigate()
+    let [name,setvalue] = useState('')
+    let [password,setpassword] = useState('')
+    let [err, seterror] = useState('')
+    let [users, setusers] = useState( ()=>{ return JSON.parse(localStorage.getItem('user')) ||[]})
+    let [paserr,setpaserr] = useState('')
+
+    function changeval(e){
+        setvalue(e.target.value.trim())
+        // e.target.value=''
+    }
+
+    function setpass(e){
+        setpassword(e.target.value.trim())
+        // e.target.value=''
+    }
+
+  
+
+
+    function Sabform (e){
+e.preventDefault()
+
+
+for(let i of users){
+    if(name === i.name){
+        // console.log(i.name)
+        seterror('Name already created, please change something')
+        return 
+    }
+}
+seterror('')
+
+
+if(name.trim().length<5){
+    seterror('Name is short, write more')
+    return 
+}else if(password.trim().length<3){
+    setpaserr('Password is short, write more')
+    return
+}
+seterror('')
+setpaserr('')
+
+
+let upuser = [...users,{name,password}]
+setusers(upuser)
+
+
+setvalue('')
+setpassword('')
+navigate('/profile')
+
+
+
+let userone = JSON.parse(localStorage.getItem('first')) || []
+userone= [{name,password}]
+localStorage.setItem('first', JSON.stringify(userone))
+console.log(localStorage.getItem('first'))
+
+    }
+useEffect(()=>{
+console.log("users updated:", users)
+  localStorage.setItem("user", JSON.stringify(users))
+}, [users])
+  
+
 
     return(
 <div className="Home" id='Hommy'>
 <div className="generalHome">
 
 <div className='loginForm1'>
-    <div id='formitem'>Regestration form</div>
-        <form id="userform1">
+   <div id='formitem'>Regestration form</div>
+
+        <form id="userform" onSubmit={Sabform}>
+
 
             <div>
-                <label for='username' >Name:</label>
-                <input type="text" id="username" name="username" placeholder="Your name?" required minLength={5}></input>
+                <label htmlFor='username' >Name:</label>
+                <input type="text" id="username" value={name} autoComplete="off" onChange={changeval} name="username" placeholder="Your name?" required minLength={5}></input>
+                <div >{err} </div>
             </div>
             <div>
-                <label for='userpassword' >Password:</label>
-                <input type="password" id="userpassword" name="password" placeholder="Your password?" required ></input>
+                <label htmlFor='userpassword' >Password:</label>
+                <input type="password" id="userpassword" value={password} autoComplete="new-password" onChange={setpass} name="password" placeholder="Your password?" required ></input>
+                  <div>{paserr} </div>
             </div>
-                <button type='submit' id="userbutton" >Registration</button>
+                <button type='submit'  id="userbutton" >Registration</button>
 
 
         </form>
+
+        {/* <Outlet/> */}
+<Link to="/reg">Go to Login</Link>
     </div>
 
 

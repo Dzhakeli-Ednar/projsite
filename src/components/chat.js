@@ -1,6 +1,11 @@
 
 export default function Chat(){
 
+let isAuth = Boolean(localStorage.getItem('first'))
+
+
+
+
     return(
 <div className="chatSite">
 

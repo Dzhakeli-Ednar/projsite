@@ -32,6 +32,12 @@ const { pathname } = useLocation()
     topClass = 'loginTop'
   }
 
+
+let isAuth = Boolean(localStorage.getItem('first'))
+
+
+
+
 return(
     
     
@@ -50,9 +56,28 @@ return(
                     <div id='chat'>
                         <Link to='/chat' onClick={changeTopChat}>Chat</Link>
                     </div>
+
+                    { !isAuth ? (<>
                     <div id='login'>
                         <Link to='/login' onClick={changeTop}>Registration</Link>
+                  
+                  
+                  
                     </div>
+                    
+                    </>):(<>
+                    
+                    <div id='login'>
+                        <Link to='/profile' onClick={changeTop}>Progile</Link>
+                  
+                  
+                  
+                    </div>
+                    </>) 
+}
+
+
+                    
                 </nav>
                 
             </div>
